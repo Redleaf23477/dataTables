@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--- https://www.w3schools.com/js/js_json_html.asp -->
+<head>
+   <title>Version 0.0</title>
+   <!-- css and js for datatables -->
+   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+   <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+   <script type="text/javascript" class="init">
+   $(document).ready(function() {
+         $('#example').DataTable();
+   } );
+   </script>
+
+</head>
+<body>
+   <!-- the select bar -->
+   <select id="myselect" onchange="myfunction(this.value)">
+      <option value="">Choose a class</option>
+      <option value="class 1">Class 1</option>
+      <option value="class 2">Class 2</option>
+   </select>
+   <p id="choice"></p>
+
+   <!-- datatabels -->
+   <table id="example" class="display" cellspacing="0" width="100%">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Score 1</th>
+            <th>Score 2</th>
+         </tr>
+      </thead>
+      <tfoot>
+         <tr>
+            <th>Name</th>
+            <th>Score 1</th>
+            <th>Score 2</th>
+         </tr>
+      </tfoot>
+      <tbody>
+         <tr>
+            <td>學霸</td>
+            <td>100</td>
+            <td>100</td>
+         </tr>
+         <tr>
+            <td>學渣</td>
+            <td>30</td>
+            <td>40</td>
+         </tr>
+         <tr>
+            <td>凡人</td>
+            <td>60</td>
+            <td>70</td>
+         </tr>
+      </tbody>
+   </table>
+
+
+
+   <script>
+   function myfunction(x)
+   {
+      if(x != "") document.getElementById("choice").innerHTML = "You choose " + x;
+   }
+   </script>
+   <script>
+   $(document).ready(function() {
+          $('#example').DataTable();
+   } );
+   </script>
+</body>
