@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--- https://www.w3schools.com/js/js_json_html.asp -->
+<head>
+   <title>Version 0.0</title>
+   <!-- css and js for datatables -->
+   <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+
+   <script type="text/javascript" class="init">
+   $(document).ready(function() {
+         $('#example').DataTable();
+   } );
+   </script>
+
+</head>
+<body>
+
+   <div id="test"></div>
+
+   <script>
+   var inp = inp();
+   var dt = JSON.parse(inp);
+   //make table
+   mk_table(dt);
+   function mk_table(dt)
+   {
+      var mytable = "<table id='example' class='display' cellspacing='0' width='100%'>";
+      mytable += mk_thead(dt);
+      mytable += mk_tfoot(dt);
+      mytable += "<tbody>";
+      mytable += cal_data(dt);
+      mytable += "</tbody>";
+      document.getElementById("test").innerHTML = mytable;
+   }
+   function mk_thead(dt)
+   {
+      var mythead;
+      mythead += "<thead><tr>";
+      for(i in dt.title)
+      {
+         mythead += "<th>"+dt.title[i]+"</th>";
+      }
+      mythead += "<th>"+"平均"+"</th>";
+      mythead += "</tr></thead>";
+      return mythead;
+   }
+   function mk_tfoot(dt)
+   {
+      var mytfoot;
+      mytfoot += "<tfoot><tr>";
+      for(i in dt.title)
+      {
+         mytfoot += "<th>"+dt.title[i]+"</th>";
+      }
+      mytfoot += "<th>"+"平均"+"</th>";
+      mytfoot += "</tr></tfoot>";
+      return mytfoot;
+   }
+   function cal_data(dt)
+   {
+      var students;
+      var tagNum = dt.title.length-2;
+      for(s in dt.student)
+      {
+         students += "<tr>";
+         students += "<td>"+dt.student[s].name+"</td>";
+         var total = 0, average;
+         for(i in dt.student[s].score)
+         {
+            total += parseInt(dt.student[s].score[i]);
+            students += "<td>"+dt.student[s].score[i]+"</td>";
+         }
+         average = total/tagNum;
+         students += "<td>"+average+"</td>";
+         students += "</tr>";
+      }
+      return students;
+   }
+   function inp()
+   {
+      return '{"title":["name", "單字", "片語", "作文", "聽力", "閱讀"], "student":[{"name":"學霸", "score":["100", "100", "90", "100", "100"]},{"name":"凡人", "score":["60", "70", "60", "80", "60"]},{"name":"學渣", "score":["39", "59", "39", "39", "59"]}]}';
+   }
+   </script>
+</body>
