@@ -1,0 +1,7 @@
+// dealing with input
+
+function input_json(classNum)
+{
+   if(classNum == 1) return'{"subject":{"title":["score1","score2","score3","score4","score5","score6","score7","score8"]},"students":[{"intro":{"name":"c1-0"},"score":{"raw":[69,3,26,77,6,52,93,0]}},{"intro":{"name":"c1-1"},"score":{"raw":[88,32,54,21,94,12,45,75]}},{"intro":{"name":"c1-2"},"score":{"raw":[12,23,85,39,88,46,93,69]}},{"intro":{"name":"c1-3"},"score":{"raw":[74,28,32,60,62,14,84,31]}},{"intro":{"name":"c1-4"},"score":{"raw":[69,10,60,27,62,54,79,3]}},{"intro":{"name":"c1-5"},"score":{"raw":[86,34,76,33,46,21,8,59]}},{"intro":{"name":"c1-6"},"score":{"raw":[45,45,50,85,43,43,6,17]}},{"intro":{"name":"c1-7"},"score":{"raw":[23,39,30,38,5,66,21,75]}}]}';
+   else if(classNum == 2) return'{"subject":{"title":["score1","score2","score3","score4","score5","score6","score7","score8"]},"students":[{"intro":{"name":"c2-0"},"score":{"raw":[28,82,2,43,88,82,46,26]}},{"intro":{"name":"c2-1"},"score":{"raw":[16,74,11,62,96,71,73,93]}},{"intro":{"name":"c2-2"},"score":{"raw":[16,24,30,59,19,37,29,95]}},{"intro":{"name":"c2-3"},"score":{"raw":[28,11,33,33,77,54,8,5]}},{"intro":{"name":"c2-4"},"score":{"raw":[88,63,48,28,45,46,55,13]}},{"intro":{"name":"c2-5"},"score":{"raw":[21,18,27,69,90,1,62,6]}},{"intro":{"name":"c2-6"},"score":{"raw":[77,92,18,48,81,99,43,9]}},{"intro":{"name":"c2-7"},"score":{"raw":[10,76,43,87,83,3,92,71]}}]}';
+}
