@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--- https://www.w3schools.com/js/js_json_html.asp -->
+<head>
+   <title>Version 1.0</title>
+
+   <!-- css and js for datatables -->
+   <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+   <script type="text/javascript" class="init">
+   $(document).ready(function() {
+         $('#my_datatable').DataTable();
+   } );
+   </script>
+
+   <!-- my javascript files -->
+   <script type="text/javascript" language="javascript" src="js/datatable.js"></script>
+   <script type="text/javascript" language="javascript" src="js/input.js"></script>
+   <script type="text/javascript" language="javascript" src="js/cal_avg.js"></script>
+
+<style>
+td {text-align:center;}
+</style>
+
+</head>
+<body>
+   <select id="select_class" onchange="process(this.value)">
+      <!-- <option value = 0>choose a class</option> -->
+      <option value = 1>class 1</option>
+      <option value = 2>class 2</option>
+   </select>
+   <div id="dest_datatable"></div>
+
+   <script>
+   function process(choice)
+   {
+      if(choice != 0)
+      {
+         var inp = input_json(choice);
+         var dt = JSON.parse(inp);
+         for(i in dt.students)
+         {
+            dt.students[i].score.average = cal_average(dt.students[i].score.raw);
+         }
+         mk_table(dt, "my_datatable", "dest_datatable");
+         $('#my_datatable').DataTable();
+      }
+   }
+   process(1);
+   </script>
+</body>
