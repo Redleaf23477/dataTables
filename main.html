@@ -1,16 +1,12 @@
 <!DOCTYPE html>
-<!--- https://www.w3schools.com/js/js_json_html.asp -->
 <head>
-   <title>Version 1.0</title>
+   <title>Version 1.1</title>
 
    <!-- css and js for datatables -->
    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
    <script type="text/javascript" class="init">
-   $(document).ready(function() {
-         $('#my_datatable').DataTable();
-   } );
    </script>
 
    <!-- my javascript files -->
@@ -30,6 +26,7 @@ td {text-align:center;}
       <option value = 2>class 2</option>
    </select>
    <div id="dest_datatable"></div>
+   <div id="dest_chart"></div>
 
    <script>
    function process(choice)
@@ -38,12 +35,11 @@ td {text-align:center;}
       {
          var inp = input_json(choice);
          var dt = JSON.parse(inp);
-         for(i in dt.students)
-         {
-            dt.students[i].score.average = cal_average(dt.students[i].score.raw);
-         }
+         count_score(dt);
          mk_table(dt, "my_datatable", "dest_datatable");
-         $('#my_datatable').DataTable();
+         $(document).ready(function() {
+               $('#my_datatable').DataTable();
+         } );
       }
    }
    process(1);
