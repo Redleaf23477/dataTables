@@ -83,7 +83,7 @@
    }
    function mk_thead(dt)
    {
-      var mythead;
+      var mythead = "";
       mythead += "<thead><tr>";
       for(i in dt.title)
       {
@@ -95,7 +95,7 @@
    }
    function mk_tfoot(dt)
    {
-      var mytfoot;
+      var mytfoot = "";
       mytfoot += "<tfoot><tr>";
       for(i in dt.title)
       {
@@ -107,7 +107,7 @@
    }
    function cal_data(dt)
    {
-      var students;
+      var students = "";
       var tagNum = dt.title.length-2;
       for(s in dt.student)
       {
