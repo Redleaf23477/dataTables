@@ -14,8 +14,12 @@
    <script type="text/javascript" language="javascript" src="js/cal_avg.js"></script>
    <script type="text/javascript" language="javascript" src="js/gchart.js"></script>
 
+   <script>
+   </script>
+
 <style>
 td {text-align:center;}
+td.sorting_1:hover{cursor:pointer;}
 </style>
 
 </head>
@@ -30,6 +34,8 @@ td {text-align:center;}
 
    <script>
    var dt = {};
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(mk_chart);
    function process_datatable(choice)
    {
       var inp = input_json(choice);
@@ -43,8 +49,7 @@ td {text-align:center;}
    }
    function process_stchart(choice)
    {
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(mk_chart);
+
       mk_chart(dt, choice, "dest_chart");
    }
    process_datatable(1);
