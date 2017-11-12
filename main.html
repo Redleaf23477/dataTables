@@ -6,6 +6,8 @@
    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
+
    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css">
 
@@ -13,6 +15,10 @@
    <script type="text/javascript" language="javascript" src="js/datatable.js"></script>
    <script type="text/javascript" language="javascript" src="js/input.js"></script>
    <script type="text/javascript" language="javascript" src="js/cal_avg.js"></script>
+   <script type="text/javascript" language="javascript" src="js/gchart.js"></script>
+
+   <script>
+   </script>
 
    <script>
    </script>
@@ -34,6 +40,8 @@ td.sorting_1:hover{cursor:pointer;}
 
    <script>
    var dt = {};
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(mk_chart);
    function process_datatable(choice)
    {
       var inp = input_json(choice);
@@ -45,6 +53,10 @@ td.sorting_1:hover{cursor:pointer;}
             var my_datatable = $('#my_datatable').DataTable();
             new $.fn.dataTable.FixedColumns(my_datatable, {fixedColumns:{leftColumns: 1}});
       } );
+   }
+   function process_stchart(choice)
+   {
+      mk_chart(dt, choice, "dest_chart");
    }
    process_datatable(1);
    </script>
