@@ -53,7 +53,7 @@ function mk_body(dt)
    for(s in dt.students)
    {
       mybody += "<tr>";
-      mybody += "<td>"+dt.students[s].intro.name+"</td>";
+      mybody += "<td onclick='process_stchart("+s+")'>"+dt.students[s].intro.name+"</td>";
       for(i in dt.students)
       {
          mybody += "<td>"+dt.students[s].score.raw[i]+"</td>";
