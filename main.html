@@ -2,17 +2,17 @@
 <head>
    <title>Version 1.1</title>
 
-   <!-- css and js for datatables -->
+   <!-- css and js for datatables and google chart -->
    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
-   <script type="text/javascript" class="init">
-   </script>
+   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
    <!-- my javascript files -->
    <script type="text/javascript" language="javascript" src="js/datatable.js"></script>
    <script type="text/javascript" language="javascript" src="js/input.js"></script>
    <script type="text/javascript" language="javascript" src="js/cal_avg.js"></script>
+   <script type="text/javascript" language="javascript" src="js/gchart.js"></script>
 
 <style>
 td {text-align:center;}
@@ -20,28 +20,33 @@ td {text-align:center;}
 
 </head>
 <body>
-   <select id="select_class" onchange="process(this.value)">
-      <!-- <option value = 0>choose a class</option> -->
+   <select id="select_class" onchange="process_datatable(this.value)">
       <option value = 1>class 1</option>
       <option value = 2>class 2</option>
    </select>
    <div id="dest_datatable"></div>
+   <p>Click on their name to display chart</p>
    <div id="dest_chart"></div>
 
    <script>
-   function process(choice)
+   var dt = {};
+   function process_datatable(choice)
    {
-      if(choice != 0)
-      {
-         var inp = input_json(choice);
-         var dt = JSON.parse(inp);
-         count_score(dt);
-         mk_table(dt, "my_datatable", "dest_datatable");
-         $(document).ready(function() {
-               $('#my_datatable').DataTable();
-         } );
-      }
+      var inp = input_json(choice);
+      dt = JSON.parse(inp);
+      count_score(dt);
+      mk_table(dt, "my_datatable", "dest_datatable");
+      $(document).ready(function() {
+            $('#my_datatable').dataTable({"scrollX":true});
+            $('#my_datatable').DataTable();
+      } );
    }
-   process(1);
+   function process_stchart(choice)
+   {
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(mk_chart);
+      mk_chart(dt, choice, "dest_chart");
+   }
+   process_datatable(1);
    </script>
 </body>
